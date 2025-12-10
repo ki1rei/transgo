@@ -1,0 +1,25 @@
+.navbarFixed {
+  @apply fixed z-[9999] bg-background/80 shadow-lg;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hamburgerLine {
+  @apply w-[30px] h-[2px] my-2 block bg-white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburgerActive > span:nth-child(1) {
+  @apply rotate-45;
+  transform-origin: top left;
+}
+
+.hamburgerActive > span:nth-child(2) {
+  @apply scale-0 opacity-0;
+}
+
+.hamburgerActive > span:nth-child(3) {
+  @apply -rotate-45;
+  transform-origin: bottom left;
+}
