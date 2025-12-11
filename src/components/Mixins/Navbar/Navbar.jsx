@@ -76,17 +76,17 @@ const Navbar = () => {
   return (
     <header className="absolute top-0 left-0 z-50 flex items-center w-full bg-transparent">
       <div className="container mx-auto">
-        <div className="mx-auto w-full px-10">
+        <div className="mx-auto w-full px-4 sm:px-6 lg:px-10">
           <div className="relative flex items-center justify-between py-4">
             {/* Logo */}
-            <div className="px-4 w-12 h-6">
+            <div className="px-2 sm:px-4 flex-shrink-0">
               <Link href="/" legacyBehavior>
                 <a
-                  className="inline-flex items-center gap-4 text-2xl font-bold text-teal-400"
+                  className="inline-flex items-center gap-2 sm:gap-4 text-xl sm:text-2xl font-bold text-teal-400"
                   aria-label="logo"
                 >
-                  <Image src="/assets/img/Logo.png" alt="TRNSGO Logo" width={100} height={100} />
-                  <span className="text-white whitespace-nowrap font-semibold">{getActiveRouteName()}</span>
+                  <Image src="/assets/img/Logo.png" alt="TRNSGO Logo" width={100} height={100} className="w-16 sm:w-20 lg:w-24" />
+                  <span className="text-white whitespace-nowrap font-semibold text-sm sm:text-base lg:text-lg hidden xs:inline">{getActiveRouteName()}</span>
                 </a>
               </Link>
             </div>
@@ -114,14 +114,24 @@ const Navbar = () => {
               </nav>
 
               {/* CTA Button */}
-              <button className="px-6 py-3 bg-gradient-to-r from-[#4DB8B2] to-[#A6FBD4] hover:from-[#3da7a1] hover:to-[#8ee8c0] text-white rounded-full font-semibold transition-all duration-300 flex items-center gap-2">
+              <button 
+                onClick={() => {
+                  const section = document.getElementById('hubungi-kami');
+                  if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    window.location.href = '/#hubungi-kami';
+                  }
+                }}
+                className="px-6 py-3 bg-gradient-to-r from-[#4DB8B2] to-[#A6FBD4] hover:from-[#3da7a1] hover:to-[#8ee8c0] text-white rounded-full font-semibold transition-all duration-300 flex items-center gap-2"
+              >
                 <Phone className="w-5 h-5" />
                 Hubungi Kami
               </button>
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="flex items-center px-4 lg:hidden">
+            <div className="flex items-center px-2 sm:px-4 lg:hidden">
               <button
                 id="hamburger"
                 name="hamburger"
@@ -163,7 +173,18 @@ const Navbar = () => {
                   </li>
                 ))}
                 <li className="px-6 pt-4">
-                  <button className="w-full px-6 py-3 bg-gradient-to-r from-[#4DB8B2] to-[#A6FBD4] hover:from-[#3da7a1] hover:to-[#8ee8c0] text-white rounded-full font-semibold transition-all duration-300 flex items-center justify-center gap-2">
+                  <button 
+                    onClick={() => {
+                      const section = document.getElementById('hubungi-kami');
+                      if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                      } else {
+                        window.location.href = '/#hubungi-kami';
+                      }
+                      hamburgerHandler();
+                    }}
+                    className="w-full px-6 py-3 bg-gradient-to-r from-[#4DB8B2] to-[#A6FBD4] hover:from-[#3da7a1] hover:to-[#8ee8c0] text-white rounded-full font-semibold transition-all duration-300 flex items-center justify-center gap-2"
+                  >
                     <Phone className="w-5 h-5" />
                     Hubungi Kami
                   </button>

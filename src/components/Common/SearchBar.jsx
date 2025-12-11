@@ -32,9 +32,9 @@ const SearchBar = ({ onSearch, placeholder = "Cari dokumen..." }) => {
           onClick={handleExpand}
           variant="outline"
           size="icon"
-          className="rounded-full bg-slate-800 border-slate-700 hover:bg-slate-700 hover:border-teal-500 transition-all"
+          className="rounded-full bg-slate-800 border-slate-700 hover:bg-slate-700 hover:border-teal-500 transition-all w-9 h-9 sm:w-10 sm:h-10"
         >
-          <Search className="w-5 h-5 text-white" />
+          <Search className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
         </Button>
       ) : (
         // Expanded state - search input with animation
@@ -46,17 +46,17 @@ const SearchBar = ({ onSearch, placeholder = "Cari dokumen..." }) => {
               value={searchValue}
               onChange={handleChange}
               autoFocus
-              className="pl-10 pr-4 py-2 bg-slate-800 text-white rounded-full border-slate-700 focus:border-teal-500 focus-visible:ring-teal-500/20 transition-all w-64"
+              className="pl-8 sm:pl-10 pr-3 sm:pr-4 py-2 bg-slate-800 text-white rounded-full border-slate-700 focus:border-teal-500 focus-visible:ring-teal-500/20 transition-all w-40 sm:w-64 text-sm sm:text-base"
             />
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Search className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
           </div>
           <Button
             onClick={handleCollapse}
             variant="outline"
             size="icon"
-            className="rounded-full bg-slate-800 border-slate-700 hover:bg-slate-700 hover:border-red-500 transition-all"
+            className="rounded-full bg-slate-800 border-slate-700 hover:bg-slate-700 hover:border-red-500 transition-all w-9 h-9 sm:w-10 sm:h-10"
           >
-            <X className="w-5 h-5 text-white" />
+            <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </Button>
         </div>
       )}

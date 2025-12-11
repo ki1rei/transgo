@@ -448,15 +448,15 @@ const ContainerDokumenK3 = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-background py-20">
-        <div className="w-full px-6 mx-auto">
+      <div className="min-h-screen bg-background py-16 sm:py-20">
+        <div className="w-full px-4 sm:px-6 mx-auto">
           {/* Header */}
-          <div className="my-6 flex items-center justify-between gap-4">
-            <h1 className="text-xl md:text-2xl font-bold text-white">
+          <div className="my-4 sm:my-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
               Dokumen K3
             </h1>
             
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
               <SearchBar onSearch={handleSearch} placeholder="Cari dokumen..." />
               <FilterDialog hasActiveFilters={hasActiveFilters}>
                 <div className="p-6 space-y-6">
@@ -537,7 +537,7 @@ const ContainerDokumenK3 = () => {
 
           {/* Grid Cards */}
           {currentData.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
               {currentData.map((doc) => (
                 <div
                   key={doc.id}
@@ -580,15 +580,15 @@ const ContainerDokumenK3 = () => {
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center py-20 mb-12">
-              <div className="bg-backgroundsecondary rounded-3xl p-10 text-center max-w-md">
-                <div className="w-20 h-20 mx-auto mb-6 bg-slate-700 rounded-full flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="flex flex-col items-center justify-center py-12 sm:py-20 mb-8 sm:mb-12">
+              <div className="bg-backgroundsecondary rounded-3xl p-6 sm:p-10 text-center max-w-md mx-4">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-slate-700 rounded-full flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Dokumen Tidak Ditemukan</h3>
-                <p className="text-gray-400 mb-6">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">Dokumen Tidak Ditemukan</h3>
+                <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-base">
                   {searchQuery && hasActiveFilters
                     ? `Tidak ada dokumen yang cocok dengan pencarian "${searchQuery}" dan filter yang dipilih.`
                     : searchQuery
@@ -611,35 +611,35 @@ const ContainerDokumenK3 = () => {
           {/* Modal */}
           {isModalOpen && selectedDoc && (
             <div 
-              className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-2 sm:p-4"
               onClick={closeModal}
             >
               <div 
-                className="bg-backgroundsecondary rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+                className="bg-backgroundsecondary rounded-2xl sm:rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Modal Header */}
-                <div className="sticky top-0 bg-backgroundsecondary p-6 border-b border-slate-700 flex items-start justify-between">
-                  <div>
-                    <span className={`inline-block text-xs font-medium px-3 py-1 rounded-full mb-3 ${getCategoryColor(selectedDoc.color)}`}>
+                <div className="sticky top-0 bg-backgroundsecondary p-4 sm:p-6 border-b border-slate-700 flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <span className={`inline-block text-xs font-medium px-3 py-1 rounded-full mb-2 sm:mb-3 ${getCategoryColor(selectedDoc.color)}`}>
                       {selectedDoc.category}
                     </span>
-                    <h2 className="text-2xl font-bold text-white">
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
                       {sopData[selectedDoc.id]?.title || selectedDoc.title}
                     </h2>
                   </div>
                   <button 
                     onClick={closeModal}
-                    className="p-2 hover:bg-slate-700 rounded-full transition-colors"
+                    className="p-2 hover:bg-slate-700 rounded-full transition-colors flex-shrink-0"
                   >
-                    <X className="w-6 h-6 text-gray-400" />
+                    <X className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400" />
                   </button>
                 </div>
 
                 {/* Modal Content */}
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   {/* Document Image */}
-                  <div className="relative h-48 w-full mb-6 rounded-xl overflow-hidden bg-transparent">
+                  <div className="relative h-36 sm:h-48 w-full mb-4 sm:mb-6 rounded-xl overflow-hidden bg-transparent">
                     <Image 
                       src={selectedDoc.image} 
                       alt={selectedDoc.title} 
@@ -649,12 +649,12 @@ const ContainerDokumenK3 = () => {
                   </div>
 
                   {/* SOP Points */}
-                  <div className="space-y-3">
-                    <h3 className="text-lg font-semibold text-teal-400 mb-4">Poin-Poin SOP:</h3>
-                    <ul className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
+                    <h3 className="text-base sm:text-lg font-semibold text-teal-400 mb-3 sm:mb-4">Poin-Poin SOP:</h3>
+                    <ul className="space-y-2 sm:space-y-3">
                       {sopData[selectedDoc.id]?.points.map((point, index) => (
-                        <li key={index} className="flex items-start gap-3 text-gray-300">
-                          <span className="flex-shrink-0 w-6 h-6 bg-teal-500/20 text-teal-400 rounded-full flex items-center justify-center text-sm font-medium">
+                        <li key={index} className="flex items-start gap-2 sm:gap-3 text-gray-300 text-sm sm:text-base">
+                          <span className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 bg-teal-500/20 text-teal-400 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium">
                             {index + 1}
                           </span>
                           <span>{point}</span>
@@ -664,12 +664,12 @@ const ContainerDokumenK3 = () => {
                   </div>
 
                   {/* Tags */}
-                  <div className="mt-6 pt-6 border-t border-slate-700">
+                  <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-slate-700">
                     <div className="flex flex-wrap gap-2">
                       {selectedDoc.tags.map((tag, index) => (
                         <span
                           key={index}
-                          className="bg-[#263238] text-gray-300 text-xs px-4 py-2 rounded-full"
+                          className="bg-[#263238] text-gray-300 text-xs px-3 sm:px-4 py-1.5 sm:py-2 rounded-full"
                         >
                           {tag}
                         </span>
@@ -682,51 +682,53 @@ const ContainerDokumenK3 = () => {
           )}
 
           {/* Pagination */}
-          <div className="flex items-center justify-center gap-2">
-            <button
-              onClick={() => setCurrentPage(1)}
-              disabled={currentPage === 1}
-              className="px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              «
-            </button>
-            <button
-              onClick={() => setCurrentPage(currentPage - 1)}
-              disabled={currentPage === 1}
-              className="px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              ‹
-            </button>
-
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          {totalPages > 0 && (
+            <div className="flex items-center justify-center gap-1 sm:gap-2 flex-wrap">
               <button
-                key={page}
-                onClick={() => setCurrentPage(page)}
-                className={`px-4 py-2 rounded-lg transition-colors ${
-                  currentPage === page
-                    ? 'bg-gradient-to-r from-[#4DB8B2] to-[#A6FBD4] hover:from-[#3da7a1] hover:to-[#8ee8c0] text-white'
-                    : 'bg-slate-800 text-white hover:bg-slate-700'
-                }`}
+                onClick={() => setCurrentPage(1)}
+                disabled={currentPage === 1}
+                className="px-3 sm:px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm sm:text-base"
               >
-                {page}
+                «
               </button>
-            ))}
+              <button
+                onClick={() => setCurrentPage(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="px-3 sm:px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm sm:text-base"
+              >
+                ‹
+              </button>
 
-            <button
-              onClick={() => setCurrentPage(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              className="px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              ›
-            </button>
-            <button
-              onClick={() => setCurrentPage(totalPages)}
-              disabled={currentPage === totalPages}
-              className="px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              »
-            </button>
-          </div>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base ${
+                    currentPage === page
+                      ? 'bg-gradient-to-r from-[#4DB8B2] to-[#A6FBD4] hover:from-[#3da7a1] hover:to-[#8ee8c0] text-white'
+                      : 'bg-slate-800 text-white hover:bg-slate-700'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+
+              <button
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="px-3 sm:px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm sm:text-base"
+              >
+                ›
+              </button>
+              <button
+                onClick={() => setCurrentPage(totalPages)}
+                disabled={currentPage === totalPages}
+                className="px-3 sm:px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm sm:text-base"
+              >
+                »
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </MainLayout>
